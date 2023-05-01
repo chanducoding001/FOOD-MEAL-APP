@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- same header from home page -->
     <header>
         <div class="logo-nav">
             <div class="chef-logo"><img src="./images/chef-logo.jpeg" height="100px"/></div>
@@ -32,6 +33,8 @@
         </nav>
     </header>
 <main>
+    <!-- from favourite page whenever you click on that item you will come here -->
+    <!-- about that product, details are displayed here -->
     <section>
         <div>
             <div class="about-fav">
@@ -41,7 +44,7 @@
         </div>
     </section>
 </main>
-
+<!-- same footer from home page -->
 <footer id="foot">
     <div class="foot-headings">
         <div><h4 class="food-world">Food WORLD</h4></div>
@@ -49,27 +52,27 @@
     <div id="dropdowns">
         <div class="dropup-center dropup">
             <button class="btn foot-flag-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <div class="flag-btn"><img src="./images/indian_flag.png" height="20px" width="30px"/> <h6>INDIA</h6><i class="fa-solid fa-sort-up" id="angle-up"></i></div>
+                <div class="flag-btn"><img src="./images/indian_flag.png" height="20px" width="30px"/> <h6>INDIA</h6><i class="fa-solid fa-sort-up" id="angle-up"></i></div>
             </button>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item li-a-flag" href="#"><div><img src="./images/russia_flag.png"height="20px" width="30px"/></div><h6 class="country">RUSSIA</h6></a></li>
-              <li><a class="dropdown-item li-a-flag" href="#"><div><img src="./images/usa_flag.png"height="20px" width="30px"/></div><h6 class="country">USA</h6></a></li>
-              <li><a class="dropdown-item li-a-flag" href="#"><div><img src="./images/france_flag.png"height="20px" width="30px"/></div><h6 class="country">FRANCE</h6></a></li>
+                <li><a class="dropdown-item li-a-flag" href="#"><div><img src="./images/russia_flag.png"height="20px" width="30px"/></div><h6 class="country">RUSSIA</h6></a></li>
+                <li><a class="dropdown-item li-a-flag" href="#"><div><img src="./images/usa_flag.png"height="20px" width="30px"/></div><h6 class="country">USA</h6></a></li>
+                <li><a class="dropdown-item li-a-flag" href="#"><div><img src="./images/france_flag.png"height="20px" width="30px"/></div><h6 class="country">FRANCE</h6></a></li>
             </ul>
-          </div>
-          <div class="dropup-center dropup">
+            </div>
+            <div class="dropup-center dropup">
             <button class="btn foot-flag-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <div class="flag-btn"><i class="fa-solid fa-globe"></i> <h6>ENGLISH</h6><i class="fa-solid fa-sort-up" id="angle-up"></i></div>
             </button>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">English</a></li>
-              <li><a class="dropdown-item" href="#">Hindi</a></li>
-              <li><a class="dropdown-item" href="#">Russia</a></li>
-              <li><a class="dropdown-item" href="#">French</a></li>
-              <li><a class="dropdown-item" href="#">Bali</a></li>
-              <li><a class="dropdown-item" href="#">Arabic</a></li>
+                <li><a class="dropdown-item" href="#">English</a></li>
+                <li><a class="dropdown-item" href="#">Hindi</a></li>
+                <li><a class="dropdown-item" href="#">Russia</a></li>
+                <li><a class="dropdown-item" href="#">French</a></li>
+                <li><a class="dropdown-item" href="#">Bali</a></li>
+                <li><a class="dropdown-item" href="#">Arabic</a></li>
             </ul>
-          </div>
+            </div>
     </div>
 </div>
 <div id="foot-lists">
@@ -152,6 +155,7 @@
 </footer>
 
     <script>
+        // i am getting clicked product id from local storage and fetching data from api using that id
         let aboutid=localStorage.getItem("AboutId");
         console.log(aboutid);
 let displayDish=document.getElementById("default-meal-section1");

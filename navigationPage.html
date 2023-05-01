@@ -11,6 +11,7 @@
     <title>Navigation Page</title>
 </head>
 <body>
+    <!-- same header from home page -->
     <header>
         <div class="logo-nav">
             <div class="chef-logo"><img src="./images/chef-logo.jpeg" height="100px"/></div>
@@ -33,6 +34,7 @@
         </nav>
     </header>
     <main>
+        <!-- searched item types are displayed here -->
         <section>
             <div>
                 <h4 id="desi">Searched Meal</h4>
@@ -41,7 +43,7 @@
             <div id="default-meal-section1"></div>
         </section>
     </main>
-
+    <!-- same footer from home page -->
     <footer id="foot">
         <div class="foot-headings">
             <div><h4 class="food-world">Food WORLD</h4></div>
@@ -49,27 +51,27 @@
         <div id="dropdowns">
             <div class="dropup-center dropup">
                 <button class="btn foot-flag-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  <div class="flag-btn"><img src="./images/indian_flag.png" height="20px" width="30px"/> <h6>INDIA</h6><i class="fa-solid fa-sort-up" id="angle-up"></i></div>
+                    <div class="flag-btn"><img src="./images/indian_flag.png" height="20px" width="30px"/> <h6>INDIA</h6><i class="fa-solid fa-sort-up" id="angle-up"></i></div>
                 </button>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item li-a-flag" href="#"><div><img src="./images/russia_flag.png"height="20px" width="30px"/></div><h6 class="country">RUSSIA</h6></a></li>
-                  <li><a class="dropdown-item li-a-flag" href="#"><div><img src="./images/usa_flag.png"height="20px" width="30px"/></div><h6 class="country">USA</h6></a></li>
-                  <li><a class="dropdown-item li-a-flag" href="#"><div><img src="./images/france_flag.png"height="20px" width="30px"/></div><h6 class="country">FRANCE</h6></a></li>
+                    <li><a class="dropdown-item li-a-flag" href="#"><div><img src="./images/russia_flag.png"height="20px" width="30px"/></div><h6 class="country">RUSSIA</h6></a></li>
+                    <li><a class="dropdown-item li-a-flag" href="#"><div><img src="./images/usa_flag.png"height="20px" width="30px"/></div><h6 class="country">USA</h6></a></li>
+                    <li><a class="dropdown-item li-a-flag" href="#"><div><img src="./images/france_flag.png"height="20px" width="30px"/></div><h6 class="country">FRANCE</h6></a></li>
                 </ul>
-              </div>
-              <div class="dropup-center dropup">
+            </div>
+            <div class="dropup-center dropup">
                 <button class="btn foot-flag-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <div class="flag-btn"><i class="fa-solid fa-globe"></i> <h6>ENGLISH</h6><i class="fa-solid fa-sort-up" id="angle-up"></i></div>
                 </button>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">English</a></li>
-                  <li><a class="dropdown-item" href="#">Hindi</a></li>
-                  <li><a class="dropdown-item" href="#">Russia</a></li>
-                  <li><a class="dropdown-item" href="#">French</a></li>
-                  <li><a class="dropdown-item" href="#">Bali</a></li>
-                  <li><a class="dropdown-item" href="#">Arabic</a></li>
+                    <li><a class="dropdown-item" href="#">English</a></li>
+                    <li><a class="dropdown-item" href="#">Hindi</a></li>
+                    <li><a class="dropdown-item" href="#">Russia</a></li>
+                    <li><a class="dropdown-item" href="#">French</a></li>
+                    <li><a class="dropdown-item" href="#">Bali</a></li>
+                    <li><a class="dropdown-item" href="#">Arabic</a></li>
                 </ul>
-              </div>
+            </div>
         </div>
     </div>
     <div id="foot-lists">
@@ -151,26 +153,26 @@
     </div>
     </footer>
 
-
-
-
-
-
-
-
-
     <script>
+        // i had set "mealId" array in local storage  and getting it here to update local storage after adding items and to display cart count
+        //JSON.parse() takes json object and gives javascript object so to use mealId in localstorage which is in JSON object format,used json.parse to convert it to array
+
         let cartArr=JSON.parse(localStorage.getItem("mealId"));
         let cartCount=document.getElementById("cart-count");
+        //deep copying mealId data which is stored in cartArr to arr
         let arr=[...cartArr];
+        //displaying cart count
         cartCount.innerHTML=arr.length;
         let displayDish=document.getElementById("default-meal-section1");
+        //i had set "searchedDish" in local storge to store searched item and to use here to display items in API
         let getSearchedDish=localStorage.getItem("searchedDish");
 async function getItems(){
+    //using localstorage stored dish item fetching data from api
     let fetched=await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${getSearchedDish}`);
         let data=await fetched.json();
     
         data.meals.map(async (item)=>{
+            // for each item i am displaying in image card format using "bootstrap"
         let outputContent=`
         <div class="card" style="width: 18rem; margin:10px;">
             
@@ -183,20 +185,26 @@ async function getItems(){
         </div>
         
         `;
+        //displaying each product card in displayDish page
         displayDish.innerHTML+=outputContent;
         });
     }
     getItems();
+    //in the product card, to the "add button" i gave each "item id" present in data of api as an argument to addToCart()
     
 function addToCart(event){
-    
+    // that id i am storing in array "arr"
     arr.push(event);
+    //as there is no process to update localstorage arr i am "removing" that mealId after copying all its contents to "arr"
+    //which we have done above and setting new array with same name in local storage
     localStorage.removeItem("mealId");
     localStorage.setItem("mealId",JSON.stringify(arr));
+    //so in order to continuously update cart count i am calling updatelocalStorage()
 updatelocalStorage();
 
 }
 function updatelocalStorage(){
+    //again i am getting local storage mealId and displaying its length in cart count
 let cartCountValue=JSON.parse(localStorage.getItem("mealId"));
 cartCount.innerHTML=cartCountValue.length;
 }

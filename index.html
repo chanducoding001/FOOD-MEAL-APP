@@ -11,13 +11,30 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!--This is Home Page of Meal App which consists of a header, main and footer -->
+    <!-- Header consists of logos which are animated and assosciated pages links and communication links -->
+    <!-- Flow of pages -->
+    <!-- default data is displayed in "home page" which is fetched from api  -->
+    <!-- if you search something in the input it will give you suggestions eg search chicken -->
+    <!-- if you press search button it will take you to "navigation page" where your searched items will be displayed-->
+    <!-- if input is empty or white spaces, and you hit search button, "please enter your dish" gif will be displayed -->
+    <!-- if you add items from the home page it will increment cart value and changes are reflected in count -->
+    <!-- for storing cart count, "local storage" is used so from your navigation page even if you add items count is reflected-->
+    <!-- if you go to "favourites" page a list of your added items will be displayed -->
+    <!-- each item in favourites page will have "delete button" and when you hit that button item will be removed and count is "decresed"-->
+    <!-- from favourites page if you click on particular item it will take you to "about page" where the information about that dish will be there -->
+    <!-- if you click on "populars" it will navigate to "desi food" section of same home page -->
+    <!-- if you click on "contact" it will navigate to footer of that particular page -->
     <header>
+        <!--Div with class logo-nav consists of logos which are animated(made image rotate infinite times 360deg) 
+        and logo class div move horizontally infinite times-->
         <div class="logo-nav">
 
             <div class="chef-logo"><img src="./images/chef-logo.jpeg" height="100px"/></div>
             <div class="logo"><h4>FOOD WORLD</h4></div>
             
         </div>
+        <!-- pages-nav class contains assosciated pages links -->
         <nav class="pages-nav">
             <h4><a href="index.html">Home</a></h4>
             <h4><a href="favourites.html">Favourites</a></h4>
@@ -25,6 +42,7 @@
             <h4><a href="#meal2">Populars</a></h4>
             <h4><a href="#foot">Contact</a></h4>
         </nav>
+        <!-- communication links of google,facebook,youtube,linkedin,twitter -->
         <nav class="communication-nav">
 
             <a href="https://www.google.com/" class="item"><i class="fa-brands fa-google"></i></a>
@@ -34,29 +52,38 @@
             <a href="https://twitter.com/i/flow/login" class="item"><i class="fa-brands fa-twitter"></i></a>
             
         </nav>
+        <!-- end of header -->
     </header>
+    <!-- main section -->
     <main>
+        <!-- search section with input tag,search button and cart count link which will take you to "favourites" page -->
         <section class="search-section">
             <div class="input-wrapper">
                 <div class="home-input-search">
                 <input id="input" type="text" placeholder="Search your meal by name"/>
                 <button id="btn"><i class="fa solid fa-search"></i></button>
                 </div>
+                <!-- suggestions are displayed in this div -->
                 <div id="suggest-input"></div>
             </div>
             <div>
                 <h4><a href="favourites.html">Cart Count:<span id="cart-count">0</span></a></h4>
             </div>
         </section>
+        <!-- one of the default meal type fetched from api-->
         <section id="meal1">
             <div><h4 id="desi">Latest Meal</h4></div>
             <div id="default-meal-section1"></div>
         </section>
+
+        <!-- one of the default meal type fetched from api-->
+
         <section id="meal2">
             <div><h4 id="desi1">Desi Food</h4></div>
             <div id="default-meal-section2"></div>
         </section>
     </main>
+    <!-- footer of home page -->
     <footer id="foot">
         <div class="foot-headings">
             <div><h4 class="food-world">Food WORLD</h4></div>
@@ -166,7 +193,7 @@
     </div>
     </footer>
 
-
+<!-- script tag which is the root of app -->
 <script src="script.js"></script>
 </body>
 </html>

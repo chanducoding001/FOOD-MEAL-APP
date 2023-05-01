@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- same header with different logo image -->
     <header>
         <div class="logo-nav">
             <div ><img style="width: 100px;border-radius: 50%;" src="./images/stirfry.gif" height="100px"/></div>
@@ -32,14 +33,17 @@
         </nav>
     </header>
     <main>
+        <!-- whenever you click on add button that button is going to call a function which is taking that item id as argument -->
+        <!-- and that function does storing that id in local storage array so using that array displaying data in favourits -->
         <section>
             <div class="fav">
                 <h1 class="fav-text">Favourites</h1>
             </div>
+            <!-- added products displayed here -->
             <div id="default-meal-section1"></div>
         </section>
     </main>
-
+<!-- same footer from home page -->
     <footer id="foot">
         <div class="foot-headings">
             <div><h4 class="food-world">Food WORLD</h4></div>
@@ -149,20 +153,12 @@
     </div>
     </footer>
 
-
-
-
-
-
-
-
-
-
     <script>
         let id="";
 let output=document.getElementById("default-meal-section1");
 getProduct();
 function getProduct(){
+    // i am getting local storage mealId and displaying image card to each id in mealId
     id= JSON.parse(localStorage.getItem("mealId"));
     id.map(async (eachid)=>{
         let jsondata=await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${eachid}`);
@@ -186,17 +182,26 @@ function getProduct(){
     })
     
 }
-
+// to every image of added item in favourites page i have given click event listener wich will call sendId() function
 function sendId(particularId){
+    // sendId() function is to create new local storage string which will store one element
+    //so if you click on multiple items each time it replaces with old data 
+    //purpose of storing that id in local storage is to use in about page
     localStorage.setItem("AboutId",particularId);
+    //so after storing id in local storage the page will redirect to about page where all the details about that product will be displayed
+    //to redirect below line does that
     window.location.href="about.html";
 }
 
 function deleteitem(delid){
-
+    // when delete button is clicked it will call this function
+    //so inside "id" there are mealId ids which you added every time in home page or navigation page
+    //now filtering that array to exclude your delete button clicked item and storing in updatedid
+    //so again i am removing mealId from local storage and and setting new array with same name and filtered array
 let updateid=id.filter((each)=>{return each!=delid});
     localStorage.removeItem("mealId");
     localStorage.setItem("mealId",JSON.stringify(updateid));
+    //again i am calling getProduct to display changes in page before that i am emptying page
     getProduct();
     output.innerHTML="";
     
