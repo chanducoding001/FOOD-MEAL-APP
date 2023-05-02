@@ -158,13 +158,14 @@
 
     <script>
         let id="";let cartCount=document.getElementById("cart-count");
-        let cartArr=JSON.parse(localStorage.getItem("mealId"));
-        cartCount.innerHTML=cartArr.length;
+       // let cartArr=JSON.parse(localStorage.getItem("mealId"));
+       
 let output=document.getElementById("default-meal-section1");
 getProduct();
 function getProduct(){
     // i am getting local storage mealId and displaying image card to each id in mealId
     id= JSON.parse(localStorage.getItem("mealId"));
+     cartCount.innerHTML=id.length;
     id.map(async (eachid)=>{
         let jsondata=await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${eachid}`);
         let data =await jsondata.json();
