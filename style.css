@@ -190,7 +190,16 @@ color:#232f3e;
 #meal1,#meal2{
     margin-top:20px;
 }
-
+.favourite-cart{
+    position:relative;
+    left:80%;
+}
+.favourite-cart a{
+    color:indigo
+}
+.favourite-cart a:hover{
+    color:red;
+}
 .fav-text{
     text-align: center;
     animation:change-fav-background 5s linear 1s infinite alternate;
